@@ -20,23 +20,33 @@ app.controller('financesetEditCtrl', function($scope, financesetSer,$state,toast
     financesetSer.Alldeparts().then(function(response){
         if(response.data.code == 0){
             $scope.departs = response.data.data;
+            var it=[];
+            angular.forEach($scope.departs,function(item){
+                it.push(item.department)
+            })
+            $scope.department=it;
         }else{
             toastr.error(response.data.msg,'温馨提示');
         }
     });
     $scope.collectObject= [];
-    $scope.collectSettings = {template : '{{option.department}}', smartButtonTextConverter(skip, option) { return option; }};
+    $scope.collectSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
 
     //获取汇总对象
     financesetSer.Alluser().then(function(response){
         if(response.data.code == 0){
             $scope.userName = response.data.data;
+            var  user=[];
+            angular.forEach($scope.userName,function(item){
+                user.push(item.username)
+            })
+            $scope.users=user;
         }else{
             toastr.error(response.data.msg,'温馨提示');
         }
     });
     $scope.sendObject= [];
-    $scope.stringSettings = {template : '{{option.username}}', smartButtonTextConverter(skip, option) { return option; }};
+    $scope.stringSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
 
 
 

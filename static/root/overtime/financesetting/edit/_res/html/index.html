@@ -35,19 +35,19 @@
                     <label><i><img src="/images/mandatory.png"></i><em>通报对象</em></label>
                     <div class="select">
                         <p class="select-text">
-                            <span ng-repeat="str in sendObject">{{str.username || str}}, </span>
+                            <span ng-repeat="str in sendObject">{{str}}, </span>
                         </p>
-                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="userName" selected-model="sendObject" extra-settings="stringSettings"></div>
+                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="users" selected-model="sendObject" extra-settings="stringSettings"></div>
                     </div>
                 </li>
                 <li class="required">
                     <label><i><img src="/images/mandatory.png"></i><em>汇总对象</em></label>
                     <div class="select">
                         <p class="select-text">
-                            <span ng-repeat="deport in collectObject">{{deport.department || deport}},</span>
+                            <span ng-repeat="deport in collectObject">{{deport}},</span>
 
                         </p>
-                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="departs" selected-model="collectObject" extra-settings="collectSettings"></div>
+                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="department" selected-model="collectObject" extra-settings="collectSettings"></div>
                     </div>
                 </li>
                 <li class="required">
