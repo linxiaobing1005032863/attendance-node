@@ -1,0 +1,80 @@
+<div class="collect weekC ">
+    <div class="collect-select">
+        <ul style="margin:10px 0 0 20px">
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>汇总类型: </em></label>
+                <select class="sele selwct3" ng-model="countType" ng-change="aaa()">
+                    <option value="">请选择</option>
+                    <option value="WHOLE">整体汇总</option>
+                    <option value="DEPART">部门汇总</option>
+                </select>
+            </li>
+            <li class="required"  style="width:280px" ng-show="aa">
+                <label style="width:20%"><i><img src="/images/mandatory.png"></i><em>部门</em></label>
+                <div class="select2" style="height:30px">
+                    <p class="select-text">
+                        <span ng-repeat="str in positions">{{str.department||str.operator}}, </span>
+                    </p>
+                    <div class="mymultiselect"  ng-dropdown-multiselect="" options="workOptions"  selected-model="positions" extra-settings="stringSettings"></div>
+                </div>
+            </li>
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>开始时间 </em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter startTime" ng-model="startTime" >
+            </li>
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>结束时间 </em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter endTime" ng-model="endTime" >
+            </li>
+            <button  ng-click="collect()" class="col">汇总</button>
+        </ul>
+
+    </div>
+
+    <ul class="sum-list">
+        <li class="sum-thead">
+            <span title="时间">时间</span>
+            <span title="地区">地区</span>
+            <span title="部门">部门</span>
+            <span title="岗位">岗位</span>
+            <span title="请假人">请假人</span>
+            <span title="补班请假时长">补班请假时长</span>
+            <span title="正常工作日内请假时长">正常工作日内请假时长</span>
+        </li>
+            <li class="sum-tbody" >
+                <section class="sum-tbody-sec">
+                    <span class="tES" title="{{list.time}}">{{list.time}}</span>
+                    <ul class="sum-tbody-sec-ul">
+                        <li class="sum-tbody-li" ng-repeat="list1 in list.sons">
+                            <span  class="tES" title="{{::list1.area}}">{{::list1.area}}</span>
+                            <ul class="sum-tbody-li-ul">
+                                <li style=" display: inline-flex;width: 100%;" ng-repeat="list2 in list1.sons">
+                                <span  class="tES" title="{{::list2.depart}}">{{::list2.depart}}</span>
+                                <ul class="sum-tbody-li-ul1">
+                                    <li style="width:100%"  ng-repeat="list3 in list2.sons">
+                                        <span  class="tES" title="{{::list3.position}}">{{::list3.position}}</span>
+                                        <ul  class="sum-tbody-li-ul2" ng-repeat="list4 in list3.sons">
+                                            <li style="width:100%">
+                                            <span  class="tES" style="height:46px" title="{{::list4.name}}">{{::list4.name}}</span>
+                                            <span class="tES"  style="height:45px" title="{{::list4.fillTime}}">{{::list4.fillTime}}</span>
+                                            <span class="tES"  style="height:45px" title="{{::list4.normalTime}}">{{::list4.normalTime}}</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+            </section>
+        </li>
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

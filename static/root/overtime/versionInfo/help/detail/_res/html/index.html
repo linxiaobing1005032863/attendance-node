@@ -1,0 +1,6 @@
+<div class="v-detail">
+    <ul>
+        <li><strong>问题：</strong><span>{{::data.rate}}</span></li>
+        <li ng-repeat="list in data.answers"><strong>{{::list.provider}}：</strong><span>{{::list.answer}}</span></li>
+    </ul>
+</div>

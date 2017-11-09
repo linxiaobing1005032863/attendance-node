@@ -1,0 +1,32 @@
+<div class="content-tab list">
+    <ul class="table com-table">
+        <li class="list-head">
+            <span></span>
+            <span class="data-id">id</span>
+            <span>问题提出人</span>
+            <span>问题描述</span>
+            <span>参考答案条数</span> 
+        </li>
+        <li class="list-all" ng-repeat="list in versionInfoLists.data" style="display: {{list._delete?'none':'block'}};">
+            <section>
+                <div  class="list-text {{list._selectList?'selectList':''}}" ng-click="selectList(list)">
+                    <p>{{$index+1+num}}</p>
+                    <p class="data-id"></p>
+                    <p mod>{{::list.name}}</p>
+                    <p mod>{{::list.rate}}</p>
+                    <p mod>{{::list.answerCount}}</p>
+                </div>
+            </section>
+        </li>
+     </ul>
+     <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="versionInfo.itemsCount" take="versionInfo.take" activate="versionInfo.activatePage"></pagination>
+    </footer>
+</div>

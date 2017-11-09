@@ -1,0 +1,74 @@
+<div class="content-tab list">
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>假期名称</span>
+            <span>假期天数</span>
+            <span>假期类型</span>
+            <span>假期开始时间</span>
+            <span>假期结束时间</span>
+            <span>备注</span>
+            <span>创建人</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in mailLists" style="display: {{lists._delete?'none':'block'}};">
+            <section class="{{lists.status=='CONGEAL'?'congeal':''}}">
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.name}}</p>
+                    <p mod>{{::lists.day}}</p>
+                    <p mod>{{::lists.holidayType|type}}</p>
+                    <p mod>{{::lists.startTime}}</p>
+                    <p mod>{{::lists.endTime}}</p>
+                    <p mod>{{::lists.remark}}</p>
+                    <p mod>{{::lists.creater}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>创建时间</span>
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.createTime}}</span>
+
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="thaw-modal">
+                    <button ng-click="thaw(lists)">解冻</button>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow||congealShow"></div>
+
+
+

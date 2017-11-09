@@ -1,0 +1,54 @@
+<div class="collect weekC ">
+    <div class="collect-select">
+        <ul style="margin:10px 0 0 20px">
+
+            <li class="required"  style="width:280px">
+                <label style="width:20%"><i><img src="/images/mandatory.png"></i><em>姓名</em></label>
+                <div class="select2" style="height:30px">
+                    <p class="select-text">
+                        <span ng-repeat="str in positions">{{str.username||str.operator}}, </span>
+                    </p>
+                    <div class="mymultiselect"  ng-dropdown-multiselect="" options="users"  selected-model="positions" extra-settings="stringSettings"></div>
+                </div>
+            </li>
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>开始时间 </em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter startTime" ng-model="startTime" >
+            </li>
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>结束时间 </em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter endTime" ng-model="endTime" >
+            </li>
+            <button  ng-click="collect()" class="col">汇总</button>
+        </ul>
+
+    </div>
+    <ul class="sum-list1">
+        <li class="sum-thead-li">
+             <ul class="sum-thead-li-ul">
+                <li class="sum-thead-li-ul-li" ng-repeat="field in fields">
+                    <span class="{{field.sons[0].title ?'spanab':'spana'}}" title="{{field.title}}">{{field.title}}</span>
+                    <ul class="sum-thead-ula">
+                        <li class="sum-thead-ulb" ng-repeat="son in field.sons">
+                            <span class="sum-thead-ulb-span" title="{{son.title}}">{{son.title}}</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="sum-thead-li-ul2">
+                <li class="sum-thead-li-ul-li" ng-repeat="list in lists track by $index">
+                    <span  class="spanS {{list._selectList?'as':''}} {{list._selectLists?'as1':''}}" title="{{list.value}}">{{list.value}}</span>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<script type="text/javascript">
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+</script>

@@ -1,0 +1,126 @@
+<div class="content-tab list">
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName"  ng-init="checkedName='请选择'" ng-change="aaa()">
+            <option ng-repeat="item in titles track by $index">{{item}}</option>
+        </select>
+        <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image startTime"  ng-show="checkedName=='开始时间'">
+        <div ng-show="aa">
+            <div class="select1"  >
+                <p class="select-text" >
+                    <span ng-repeat="str in name">{{str.username||str.operator}}, </span>
+                </p>
+                <div class="mymultiselect"  ng-dropdown-multiselect="" options="workOptions"  selected-model="name" extra-settings="stringSettings"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" ng-click="search()" ng-show="checkedName=='姓名'" style="margin-top:-6%"><img src="/images/search2.png"></a>
+        <a href="javascript:void(0)" ng-click="search()"  ng-show="checkedName=='开始时间'" ><img src="/images/search2.png"></a>
+        </div>
+        <div class="search-big1" style="display :{{ isView?'none':'block'}}" ng-show="checkedName=='开始时间'">
+            <span class="salc1">结束时间</span>
+            <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image endTime" ng-model="endTime" >
+        </div>
+        <ul class="table">
+            <li class="list-head">
+                <span></span>
+                <span>区域</span>
+                <span>姓名</span>
+                <span>时间</span>
+                <span>周数</span>
+                <span>申请核对原因</span>
+                <span>申请核对时间</span>
+                <span>原请假天数</span>
+                <span></span>
+            </li>
+            <li class="list-all" ng-repeat="lists in mailLists" style="display: {{lists._delete?'none':'block'}};"   >
+                <section ng-class="{'as':lists.menuClass=='bbMenu','as1':menuClass=='aaMenu'}" >
+                    <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                        <p mod>{{$index+1+num}}</p>
+                        <p mod>{{::lists.depart}}</p>
+                        <p mod>{{::lists.name}}</p>
+                        <p mod>{{::lists.time}}</p>
+                        <p mod>{{::lists.week}}</p>
+                        <p mod>{{::lists.reason}}</p>
+                        <p mod>{{::lists.applyTime}}</p>
+                        <p mod>{{::lists.vacateDay}}</p>
+                        <p>
+                            <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                        </p>
+                    </div>
+                    <div class="can">
+                        <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                            <li>
+                                <p class="see-parent">
+                                    <span>修改后的请假天数</span>
+                                    <span>原旷工天数</span>
+                                    <span>修改后的旷工天数</span>
+                                    <span>原任务完成天数</span>
+                                    <span>修改后的任务完成天数</span>
+                                    <span>原当天考勤天数</span>
+                                    <span>修改后的当天考勤天数</span>
+                                    <span>原实际出勤天数</span>
+                                </p>
+                                <p class="see-children">
+                                    <span mod>{{::lists.vacateDayNew}}</span>
+                                    <span mod>{{::lists.absenteeismDay}}</span>
+                                    <span mod>{{::lists.absenteeismDayNew}}</span>
+                                    <span mod>{{::lists.finishDay}}</span>
+                                    <span mod>{{::lists.finishDayNew}}</span>
+                                    <span mod>{{::lists.attendanceDay}}</span>
+                                    <span mod>{{::lists.attendanceDayNew}}</span>
+                                    <span mod>{{::lists.actualDay}}</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p class="see-parent">
+                                    <span>修改后的实际出勤天数</span>
+                                    <span>负责人</span>
+                                    <span>负责人审核意见</span>
+                                    <span>负责人审核理由</span>
+                                    <span>负责人审核时间</span>
+                                    <span>项目经理</span>
+                                    <span>项目经理审核意见</span>
+                                    <span>项目经理审核理由</span>
+                                </p>
+                                <p class="see-children">
+                                    <span mod>{{::lists.actualDayNew}}</span>
+                                    <span mod>{{::lists.principal}}</span>
+                                    <span mod>{{::lists.principalAduit|driver}}</span>
+                                    <span mod>{{::lists.principalReason}}</span>
+                                    <span mod>{{::lists.principalTime}}</span>
+                                    <span mod>{{::lists.manager}}</span>
+                                    <span mod>{{::lists.managerAduit|driver}}</span>
+                                    <span mod>{{::lists.managerReason}}</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p class="see-parent">
+                                    <span>项目经理审核时间</span>
+                                    <span>最终审核意见</span>
+                                    <!--<span>背景是否为红色</span>
+                                    <span>背景是否为绿色</span>-->
+                                </p>
+                                <p class="see-children">
+                                    <span mod>{{::lists.managerTime}}</span>
+                                    <span mod>{{::lists.aduitStatus|driver}}</span>
+                                    <!--<span mod>{{lists.red|driver}}</span>
+                                    <span mod>{{lists.green|driver}}</span>-->
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </li>
+        </ul>
+        <div class="module">
+            <div class="see-module">
+                <p class="see-type">体现类型</p>
+                <p class="see-description"></p>
+                <button class="btn" modclose>关闭</button>
+            </div>
+        </div>
+        <footer class="footer">
+            <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+        </footer>
+    </div>
+
+

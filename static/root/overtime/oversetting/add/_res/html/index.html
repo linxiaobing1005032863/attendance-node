@@ -1,0 +1,105 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>汇总表名称 </em></label>
+                    <input type="text"  ng-model="name" ng-verify="option:0" ng-change="aa()">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目组</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="depart">
+                            <option  ng-repeat="depart in departs">{{depart.department}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="depart">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>设置发送时间	</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" class="add_image sendTime" ng-model="sendTime"  >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>统计类型</em></label>
+                    <select class="sele" ng-model="totalType" ng-verify="option:0">
+                        <option value="">请选择</option>
+                        <option value="NUMBER">人数</option>
+                        <option value="DETAIL">明细</option>
+                    </select>
+                </li>
+                <li>
+                    <label><em>备注 </em></label>
+                    <input type="text"  ng-model="remark">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>通报对象</em></label>
+                    <div class="select">
+                        <p class="select-text">
+                            <span ng-repeat="name in sendObject">{{name.username}}, </span>
+
+                        </p>
+                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="userName" selected-model="sendObject" extra-settings="stringSettings"></div>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>汇总对象</em></label>
+                    <div class="select">
+                        <p class="select-text">
+                            <span ng-repeat="post in collectObject">{{post.department}}, </span>
+                        </p>
+                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="departs" selected-model="collectObject" extra-settings="stringSettings1"></div>
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>是否发送至本部门全部人</em></label>
+                    <select class="sele" ng-model="all" ng-verify="option:0">
+                        <option value="">请选择</option>
+                        <option ng-value=true>是</option>
+                        <option ng-value=false>否</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>提醒频率</em></label>
+                    <select class="sele" ng-model="remindFrequency" ng-verify="option:0">
+                        <option value="">请选择</option>
+                        <option value="YEAR">年</option>
+                        <option value="SEASON">季度</option>
+                        <option value="MONTH">月</option>
+                        <option value="WEEK">周</option>
+                        <option value="DAY">天</option>
+                        <option value="HOUR">时</option>
+                        <option value="MIN">分</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>提醒间隔值 </em></label>
+                    <input type="number"  ng-model="remindVal" ng-verify="option:0" ng-change="aa()">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>汇总频率 </em></label>
+                    <select class="sele" ng-model="countFrequency" ng-verify="option:0">
+                        <option value="">请选择</option>
+                        <option value="YEAR">年</option>
+                        <option value="SEASON">季度</option>
+                        <option value="MONTH">月</option>
+                        <option value="WEEK">周</option>
+                        <option value="DAY">天</option>
+                    </select>
+                </li>
+            </ul>
+        </section>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="extraAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>
+

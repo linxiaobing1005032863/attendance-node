@@ -1,0 +1,48 @@
+<div class="return" ng-click="return()" ng-show="folder">
+    <a href=""></a>
+</div>
+<ul class="upload-yes" ng-show="folder">
+    <li ng-repeat="list in affirmFile">
+        <div class="up-al">
+            <p>{{::list.name}}</p>
+            <i href="javascript:void(0)" class="input-yes"><img src="/images/gou.png"></i>
+        </div>
+    </li>
+</ul>
+<ul class="upload-input"  ng-show="folder">
+    <li ng-repeat="list in files">
+        <div class="up-al">
+            <p>{{::list.name}}</p>
+            <a href="javascript:void(0)" class="upload-close" ng-click="del($index)"><img src="/images/close2.png"></a>
+        </div>
+    </li>
+</ul>
+<div class="upload-all" ng-show="folder">
+    <div class="upload-btn">
+        <label class="upload-pic" for="uploadFile">
+            <i class="upload-pic"></i>
+             选择文件
+        </label>
+        <input type="file" id='uploadFile' style="display: none" onchange='angular.element(this).scope().fileNameChanged()' multiple=“multiple”>
+    </div>
+</div>
+<div class="{{isUp?'sure-no':'sure-yes'}}" ng-click="updataSel()" ng-show="folder">
+    <label class="sure-btn">
+        <i class="sure-pic"></i>
+        上传
+    </label>
+</div>
+<div class="folder" ng-show="!folder">
+    <h3>请选择您将要添加的文件夹</h3>
+    <ul >
+        <li ng-repeat="list in folderList" ng-dblclick="folderFn(list.name)">
+            <span><i><img src="/images/folder.png" alt=""></i><em>{{ list.name }}</em></span>
+            <span class="selectFile">
+                <label for="file{{$index}}">请选择文件<em class="hasSel">{{ list.success?'成功':'已选' }}{{list.length}}个文件</em></label>
+                <input type="file" style="display: none" id='file{{$index}}' multiple="multiple" onchange='angular.element(this).scope().folderChange(this)'>
+            </span>
+            <span><button class="submit" ng-click="upFileFn($index,list.name)">提交</button></span>
+        </li>
+    </ul>
+</div>
+<footer class="footer"></footer>

@@ -1,0 +1,87 @@
+<div class="nav-list" ng-repeat="list in showsList">
+    <h3 class="header-menu big" ng-click="showMenu(list,true)">
+        <i class="nav-arrow" ng-class="{true: '', false: 'change-angle'}[list.showIs]"></i>
+        {{list.item}}</h3>
+    <ul class="menu" ng-if="list.menuList.length"  ng-show="list.showIs" ng-repeat="menuInfo in list.menuList">
+
+
+        <li ng-click="navClass(menuInfo.msg)"   ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.punch.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name1}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"   ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.arrestpoint.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name2}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"   ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.vacateset.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name3}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"   ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.vacaaudit.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name4}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"   ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.leave.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name5}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"   ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.extra.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name6}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"    ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.review.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name7}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.remaining.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name8}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.fill.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name9}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.dayreport.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name10}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.vacatecollect.collect[12]">
+            <a href="javascript:void(0)">{{menuInfo.name11}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.overcollect.collect[12]">
+            <a href="javascript:void(0)">{{menuInfo.name12}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.daycollect.collect[12]">
+            <a href="javascript:void(0)">{{menuInfo.name13}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.punchcollect.collect[12]">
+            <a href="javascript:void(0)">{{menuInfo.name14}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.financollect.collect[12]">
+            <a href="javascript:void(0)">{{menuInfo.name15}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.finance.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name16}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.wrong.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name17}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.punchsetting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name18}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.financesetting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name19}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.oversetting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name20}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.vacatesetting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name21}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.daysetting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name22}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.holsetting.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name23}}</a>
+        </li>
+        <li ng-click="navClass(menuInfo.msg)"     ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.audittimeset.list[12]">
+            <a href="javascript:void(0)">{{menuInfo.name24}}</a>
+        </li>
+
+        <li ng-click="navClass(menuInfo.msg)"  ng-class="{'active':navCla==menuInfo.msg}"  ui-sref="_root.overtime.setting.list[12]" >
+            <a href="javascript:void(0)">{{menuInfo.name25}}</a>
+        </li>
+        <li ng-click="navClass('version')" ng-class="{'active':navCla=='version'}"  ui-sref="_root.overtime.versionInfo.version.list[12]" ><a href="javascript:void(0)">{{menuInfo.name26}}</a></li>
+        <li ng-click="navClass('help')" ng-class="{'active':navCla=='help'}"  ui-sref="_root.overtime.versionInfo.help.list[12]" ><a href="javascript:void(0)">{{menuInfo.name27}}</a></li>
+    </ul>
+</div>

@@ -1,0 +1,105 @@
+<div class="content-tab list">
+    <div class="search-big" style="display :{{ isView?'none':'block'}}">
+        <select class="salc" ng-model="checkedName" ng-init="checkedName='驻点地点'">
+            <option ng-repeat="item in titles track by $index">{{item}}</option>
+        </select>
+        <div class="select1" ng-init="checkedName='驻点地点'">
+            <p class="select-text" >
+                <span ng-repeat="str in pointArea">{{str}}, </span>
+            </p>
+            <div class="mymultiselect"  ng-dropdown-multiselect="" options="pointAreas"  selected-model="pointArea" extra-settings="carbonsSettings"></div>
+        </div>
+        <a  style="margin-top: -5%;"  href="javascript:void(0)" ng-click="search()"><img src="/images/search2.png"></a>
+    </div>
+
+    <ul class="table">
+        <li class="list-head">
+            <span></span>
+            <span>地区</span>
+            <span>驻点地点</span>
+            <span>经度</span>
+            <span>纬度</span>
+            <span>考勤位置</span>
+            <span>有效范围</span>
+            <span>状态</span>
+            <span></span>
+        </li>
+        <li class="list-all" ng-repeat="lists in mailLists" style="display: {{lists._delete?'none':'block'}};">
+            <section  class="{{lists.status=='STOP'?'congeal':''}}">
+                <div class="list-text {{lists._selectList?'selectList':''}}" ng-click="selectList(lists)">
+                    <p mod>{{$index+1+num}}</p>
+                    <p mod>{{::lists.area}}</p>
+                    <p mod>{{::lists.pointArea}}</p>
+                    <p mod>{{::lists.longitude}}</p>
+                    <p mod>{{::lists.latitude}}</p>
+                    <p mod>{{::lists.location}}</p>
+                    <p mod>{{::lists.range}}</p>
+                    <p mod>{{lists.status|staTus}}</p>
+                    <p>
+                        <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
+                    </p>
+                </div>
+                <div class="can">
+                    <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
+                        <li>
+                            <p class="see-parent">
+                                <span>打卡工作日</span>
+                                <span>创建人</span>
+                                <span>创建时间</span>
+
+                            </p>
+                            <p class="see-children">
+                                <span mod>{{::lists.workDay}}</span>
+                                <span mod>{{::lists.name}}</span>
+                                <span mod>{{::lists.createTime}}</span>
+                            </p>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="thaw-modal">
+                    <button ng-click="thaw(lists)">启用</button>
+                </div>
+            </section>
+        </li>
+    </ul>
+    <div class="module">
+        <div class="see-module">
+            <p class="see-type">体现类型</p>
+            <p class="see-description"></p>
+            <button class="btn" modclose>关闭</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <pagination count="custom.itemsCount" take="custom.take" activate="custom.activatePage"></pagination>
+    </footer>
+</div>
+<div class="delete mod" ng-show="delShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要删除这条数据？</p>
+        <div class="btn">
+            <button ng-click="delFn()">确定</button>
+            <button ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div class="delete mod" ng-show="congealShow">
+    <div class="del-head">
+        <h5>温馨提示</h5>
+    </div>
+    <div class="del-con">
+        <p>确定要禁用这条数据？</p>
+        <div class="btn">
+            <button ng-click="conFn()">确定</button>
+            <button ng-click="conCancel()">取消</button>
+        </div>
+    </div>
+</div>
+<div id="modalbg" ng-show="delShow||congealShow"></div>
+
+
+
+

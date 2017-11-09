@@ -1,0 +1,183 @@
+<div class="content-input add" verify-scope="tipStyle: 1">
+    <div class="input-list">
+        <section>
+            <ul>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>员工编号</em></label>
+                    <input type="text"  ng-model="User.employeeNumber" ng-verify="option:0" ng-change="aa()">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>请假人</em></label>
+                    <input type="text"  ng-model="User.username" ng-verify="option:0" ng-change="aa()">
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="area">
+                            <option  ng-repeat="area in areas">{{area.area}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="area" ng-change="aa()">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>项目组/部门</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="depart">
+                            <option  ng-repeat="Depart in Departs">{{Depart.department}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="depart" ng-change="aa()">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>职位</em></label>
+                    <div class="sele side">
+                        <select class="sele" ng-model="position">
+                            <option value="">请选择</option>
+                            <option  ng-repeat="Positions in Position">{{Positions}}</option>
+                        </select>
+                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="position" ng-change="aa()">
+                    </div>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>请假类型</em></label>
+                    <select class="sele" ng-model="vacateType" ng-verify="option:0" ng-change="aa()">
+                        <option value="">请选择</option>
+                        <option value="ANNUAL">年假</option>
+                        <option value="MATTER">事假</option>
+                        <option value="SICK">病假</option>
+                        <option value="ADJUST">调休</option>
+                        <option value="MARRY">婚假</option>
+                        <option value="MATERNITY">产假</option>
+                        <option value="PATERNITY">陪产假</option>
+                        <option value="CHECK">产检假</option>
+                        <option value="FUNERAL">丧假</option>
+                        <option value="OTHER">其他</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>开始日期	</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image startDate" ng-model="startDate" ng-change="aa()" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>开始时间</em></label>
+                    <select class="sele" ng-model="startTime" ng-verify="option:0" ng-change="aa()">
+                        <option value="">请选择</option>
+                        <option value="A">08:30</option>
+                        <option value="B">09:00</option>
+                        <option value="C">09:30</option>
+                        <option value="D">10:00</option>
+                        <option value="E">10:30</option>
+                        <option value="F">11:00</option>
+                        <option value="G">11:30</option>
+                        <option value="H">13:30</option>
+                        <option value="I">14:00</option>
+                        <option value="J">14:30</option>
+                        <option value="K">15:00</option>
+                        <option value="L">15:30</option>
+                        <option value="M">16:00</option>
+                        <option value="N">16:30</option>
+                        <option value="O">17:00</option>
+                        <option value="P">17:30</option>
+                    </select>
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结束日期	</em></label>
+                    <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="add_image endDate" ng-model="endDate" ng-change="aa()" >
+                </li>
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>结束时间</em></label>
+                    <select class="sele" ng-model="endTime" ng-verify="option:0" ng-change="aa()">
+                        <option value="">请选择</option>
+                        <option value="A">09:00</option>
+                        <option value="B">09:30</option>
+                        <option value="C">10:00</option>
+                        <option value="D">10:30</option>
+                        <option value="E">11:00</option>
+                        <option value="F">11:30</option>
+                        <option value="G">13:30</option>
+                        <option value="H">14:00</option>
+                        <option value="I">14:30</option>
+                        <option value="J">15:00</option>
+                        <option value="K">15:30</option>
+                        <option value="L">16:00</option>
+                        <option value="M">16:30</option>
+                        <option value="N">17:00</option>
+                        <option value="O">17:30</option>
+                        <option value="P">18:00</option>
+                    </select>
+                </li>
+
+                <li class="required">
+                    <label><i><img src="/images/mandatory.png"></i><em>请假原因</em></label>
+                    <input type="text"  ng-model="reason"  ng-verify="option:0" ng-change="aa()">
+                </li>
+                <li class="required" >
+                    <label><i><img src="/images/mandatory.png"></i><em>主送人</em></label>
+                    <div class="select">
+                        <p class="select-text" >
+                            <span ng-repeat="str in mains">{{str}}, </span>
+                        </p>
+                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="workOptions"  selected-model="mains" extra-settings="stringSettings" ng-change="aa()"></div>
+                    </div>
+                </li>
+                <li >
+                    <label><em>抄送人 </em></label>
+                    <div class="select">
+                        <p class="select-text" >
+                            <span ng-repeat="str in carbons">{{str}},</span>
+                        </p>
+                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="carbon" selected-model="carbons" extra-settings="carbonsSettings" ng-change="aa()"></div>
+                    </div>
+                </li>
+                <li>
+                    <label><em>工作交接内容</em></label>
+                    <input type="text"  ng-model="workContent">
+                </li>
+                <li>
+                    <label><em>请假时长</em></label>
+                    <input type="text"  ng-value="time"  disabled>
+                </li>
+            </ul>
+        </section>
+        <ul class="upload-yes">
+            <li ng-repeat="list in affirmFile">
+                <div class="up-al">
+                    <p>{{::list.name}}</p>
+                    <i href="javascript:void(0)" class="input-yes"><img src="/images/gou.png"></i>
+                </div>
+            </li>
+        </ul>
+        <ul class="upload-input">
+            <li ng-repeat="list in files">
+                <div class="up-al">
+                    <p>{{::list.name}}</p>
+                    <a href="javascript:void(0)" class="upload-close" ng-click="del($index)"><img src="/images/close2.png"></a>
+                </div>
+            </li>
+        </ul>
+        <div class="upload-all-1">
+            <div class="upload-btn" >
+                <label class="upload-pic" for="uploadFile">
+                    <i class="upload-pic"></i>
+                    选择文件
+                </label>
+                <input type="file" id='uploadFile' style="display: none" onchange='angular.element(this).scope().fileNameChanged()' multiple=“multiple”>
+            </div>
+            <div class="shang-chuang" ng-click="updataSel()">上传文件</div>
+        </div>
+    </div>
+    <p class="dataBottom">
+        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
+        <button ng-verify="{control:'myform'}" ng-click="extraAddFun()">提交</button>
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    !function(){
+        laydate.skin('dahong');//切换皮肤，请查看skins下面皮肤库
+    }();
+
+
+</script>
+
