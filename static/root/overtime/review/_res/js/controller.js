@@ -7,7 +7,7 @@ app.controller('reviewModuleCtrl',function ($scope,$state) {
     if ($state.current.url == '/review') {//默认加载列表
         $state.go('root.overtime.review.list[12]')
     }
-    /*$scope.$emit('isVi',true);//判断是否出现搜索按钮*/
+    $scope.$emit('isVi',false);//判断是否出现搜索按钮
 }).controller('reviewMenuCtrl',function($scope,$state,$rootScope,$location,reviewSer){
     var urlName = $state.current.url.split('/')[1].split('[')[0];
     $scope.menuClass = urlName.split('?')[0] + "Menu";

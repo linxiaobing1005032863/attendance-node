@@ -64,6 +64,7 @@ app.controller('tesetAddCtrl', function($scope, tesetSer,$state,toastr,$statePar
     //请假人的抄送人的多选下拉框
    $scope.carbons=[];
     $scope.carbonsSettings = {template : '{{option}}', smartButtonTextConverter(skip, option) { return option; }};
+
     $scope.aa=function() {
         var vm = $scope;
         data = {
@@ -202,7 +203,7 @@ app.controller('tesetAddCtrl', function($scope, tesetSer,$state,toastr,$statePar
             startTime:vm.startTime,
             endTime:vm.endTime,
             reason:vm.reason,
-            workContent:vm.workContent,
+            handoff:vm.handoff,
             startDate:angular.element('.startDate').val(),
             endDate:angular.element('.endDate').val()
         }

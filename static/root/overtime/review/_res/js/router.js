@@ -12,7 +12,7 @@ app.config(function($provide, $stateProvider){
             }
         }
     }).state("root.overtime.review.list[12]",{
-        url:"/list[12]?id=&name=&page=&overWorker=",
+        url:"/list[12]?id=&name=&page=",
         views:{
             "content@root.overtime.review":{
                 templateUrl : "root/overtime/review/list/_res/html/index.html",

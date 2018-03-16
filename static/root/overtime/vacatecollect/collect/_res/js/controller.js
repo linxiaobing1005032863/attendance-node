@@ -5,8 +5,10 @@ app.controller('collectCtrl',function($scope,collectSer,toastr){
       var vm=$scope.countType;
       if(vm=='DEPART'){
           $scope.aa=true;
+          $scope.bb=false;
       }else{
           $scope.aa=false;
+          $scope.bb=true;
         }
     };
 
@@ -22,6 +24,19 @@ app.controller('collectCtrl',function($scope,collectSer,toastr){
     $scope.positions = [];
   /*  $scope.stringSettings = {displayProp: 'department',idProperty: 'hierarchyId'};*/
     $scope.stringSettings = {template : '{{option.department}}', smartButtonTextConverter(skip, option) { return option; }};
+    //获取所有用户
+    collectSer.getUser().then(function(response){
+        if(response.data.code == 0){
+            $scope.getUsers = response.data.data;
+            console.log($scope.getUsers);
+
+        }else{
+            toastr.error(response.data.msg,'温馨提示');
+        }
+    });
+    $scope.getallUsers = [];
+    /*  $scope.stringSettings = {displayProp: 'department',idProperty: 'hierarchyId'};*/
+    $scope.stringSettings1 = {template : '{{option.department}}', smartButtonTextConverter(skip, option) { return option; }};
     $scope.collect = function(){
         var permitArr=[];
         angular.forEach($scope.positions,function(item){

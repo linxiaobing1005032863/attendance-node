@@ -35,8 +35,8 @@
                     <p mod>{{::lists.name}}</p>
                     <p mod>{{::lists.gos[0].punchTime}}</p>
                     <p mod>{{::lists.gos[0].area}}</p>
+                    <p mod>{{::lists.gos[0].punchStatus}}</p>
                     <p mod>{{::lists.gos[0].punchSource|type}}</p>
-                    <p mod>{{::lists.gos[0].punchType|type}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -45,14 +45,20 @@
                     <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
                         <li>
                             <p class="see-parent">
+                                <span>打卡类型</span>
                                 <span>下班打卡时间</span>
                                 <span>打卡地点</span>
+                                <span>打卡状态</span>
                                 <span>打卡来源</span>
+                                <span>打卡类型</span>
                             </p>
                             <p class="see-children">
+                                <span mod>{{::lists.gos[0].punchType|type}}</span>
                                 <span mod>{{::lists.afters[0].punchTime}}</span>
                                 <span mod>{{::lists.afters[0].area}}</span>
+                                <span mod>{{::lists.afters[0].punchStatus}}</span>
                                 <span mod>{{::lists.afters[0].punchSource|type}}</span>
+                                <span mod>{{::lists.afters[0].punchType|type}}</span>
                             </p>
                         </li>
                     </ul>

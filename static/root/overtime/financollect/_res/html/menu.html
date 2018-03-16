@@ -1,5 +1,8 @@
 <ul class="list">
   <li ng-click="collect()" ng-class="{'current':menuClass=='collectMenu'}" ui-sref=".collect[12]"  ng-init="menuCheck('COLLECT')">
-        <a href="javascript:void(0)"  class="same-one">请假汇总 </a>
+        <a href="javascript:void(0)"  class="same-one">财务出勤汇总 </a>
+    </li>
+    <li ng-click="export()" ng-class="{'current':menuClass=='exportMenu'}" ui-sref=".export[12]"  ng-init="menuCheck('EXPORT')">
+        <a href="javascript:void(0)"  class="same-one">导出 </a>
     </li>
 </ul>

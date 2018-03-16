@@ -4,7 +4,8 @@ app.factory('collectSer',function ($http) {
        /* menuPermission:menuPermission,*/
         cateCollcet:cateCollcet,
         Departssteset:Departssteset,
-        findtesetId:findtesetId
+        findtesetId:findtesetId,
+        getUser:getUser
 
 
 
@@ -25,7 +26,11 @@ app.factory('collectSer',function ($http) {
     function findtesetId(data){
         return $http.get('/vacate/vacate',{
             params:data
-        })
+        });
+    }
+    //获取所有用户
+    function getUser() {
+        return $http.get('/financeattendance/user');
     }
 
 });

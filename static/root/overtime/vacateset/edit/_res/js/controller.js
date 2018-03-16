@@ -187,7 +187,6 @@ app.controller('tesetEditCtrl', function($scope, tesetSer,$state,toastr,$statePa
         var data={
             mains:permitArr.join(','),
             carbons:permit.join(','),
-            employeeNumber:vm.User.employeeNumber,
             uuid:vm.uuid,
             name:vm.User.username,
             area:vm.area,
@@ -197,7 +196,7 @@ app.controller('tesetEditCtrl', function($scope, tesetSer,$state,toastr,$statePa
             startTime:vm.startTime,
             endTime:vm.endTime,
             reason:vm.reason,
-            workContent:vm.workContent,
+            handoff:vm.handoff,
             startDate:angular.element('.startDate').val(),
             endDate:angular.element('.endDate').val()
         }

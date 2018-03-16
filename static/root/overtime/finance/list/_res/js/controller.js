@@ -13,8 +13,6 @@ app.controller('financeListCtrl',function($scope,financeSer,toastr,$stateParams,
     financeSer.Alluser().then(function(response){
         if(response.data.code == 0){
             $scope.workOptions=response.data.data;
-        }else{
-            toastr.error(response.data.msg,'温馨提示');
         }
     });
 
@@ -56,6 +54,14 @@ app.controller('financeListCtrl',function($scope,financeSer,toastr,$stateParams,
         financeSer.financeList(listData).then(function(response){
             if(response.data.code==0){
                 $scope.mailLists = response.data.data;
+                angular.forEach($scope.mailLists,function(obj,index){
+                    if(obj.red==true) {
+                        obj.menuClass='bbMenu'
+                    }else if(obj.green==true){
+                        obj.menuClass='aaMenu'
+                    }
+
+                });
                 if($stateParams.id){
                     if($stateParams.id.indexOf('&')){
                         $stateParams.id = $stateParams.id.split('&')[0];
@@ -72,23 +78,6 @@ app.controller('financeListCtrl',function($scope,financeSer,toastr,$stateParams,
                 }
             }else{
                 toastr.error( response.data.msg, '温馨提示');
-            }
-        });
-        //颜色的区分
-        financeSer.financeList().then(function(response){
-            if(response.data.code == 0){
-                $scope.mailLists = response.data.data;
-                angular.forEach($scope.mailLists,function(obj){
-                    if(obj.red==true) {
-                        obj.menuClass='bbMenu'
-                    }else if(obj.green==true){
-                        obj.menuClass='aaMenu'
-                    }
-
-                });
-
-            }else{
-                toastr.error(response.data.msg,'温馨提示');
             }
         });
     }

@@ -1,24 +1,6 @@
 var app = angular.module('tesetList', ['ng-pagination','toastr']);
 app.controller('tesetListCtrl',function($scope,tesetSer,toastr,$stateParams,$state,$location){
     $scope.$emit('changeId', null);
-/*    //监听切换搜索是否出现
-    $scope.$on('isSearch',function(event,newIs){
-        $scope.isView = newIs;
-    });
-    //搜索字段
-    $scope.overWorker = $stateParams.overWorker?$stateParams.overWorker:'';
-    if($stateParams.overWorker ){
-        $scope.$emit('isId', false);
-        $scope.isView = false;
-    }else{
-        $scope.$emit('isId', true);
-    }
-    //搜索功能
-    $scope.search = function(){
-        $state.go('root.overtime.extra.list[12]',{
-            overWorker:$scope.overWorker,page:1
-        });
-    };*/
     function activatePage(page) {
         if($scope.mailLists) return;
         var listData = {
@@ -45,8 +27,6 @@ app.controller('tesetListCtrl',function($scope,tesetSer,toastr,$stateParams,$sta
             }
         });
     }
-    // 搜索功能
-   /* $scope.titles = ['加班人员','加班人员'];*/
     $scope.selectList = function(event){
         angular.forEach($scope.mailLists,function(obj){
             obj._selectList = false
@@ -68,19 +48,6 @@ app.controller('tesetListCtrl',function($scope,tesetSer,toastr,$stateParams,$sta
         event._moreList = !event._moreList;
     };
 
-    /*//解冻
-    $scope.thaw = function(event){
-        var data = {
-            id :event.id
-        };
-        infoSer.Thawinfo(data).then(function(response){
-            if(response.data.code==0){
-                event.status = "THAW"
-            }else {
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        })
-    };*/
 //分页
     $scope.custom = {
         itemsCount: 2, //总条数
@@ -111,10 +78,6 @@ app.controller('tesetListCtrl',function($scope,tesetSer,toastr,$stateParams,$sta
         $scope.delShow = false;
         $state.go('root.overtime.vacateset.list[12]',{id:null,name:null});
     };
-  /*  $scope.conCancel = function(){//取消冻结
-        $scope.congealShow = false;
-        $state.go('root.dispatchcar.dispatchcarinfo.list[12]',{id:null,name:null});
-    };*/
     var count = 0;
     $scope.delFn = function(){//确认删除
         var data = {
@@ -136,21 +99,6 @@ app.controller('tesetListCtrl',function($scope,tesetSer,toastr,$stateParams,$sta
             }
         });
     };
-/*    $scope.conFn = function(){//确认冻结
-        var data = {
-            id:$stateParams.id
-        };
-        infoSer.congealinfo(data).then(function(response){
-            if(response.data.code==0){
-                toastr.info( "信息已冻结", '温馨提示');
-                $scope.$emit('changeId', null);
-                $scope.congealShow = false;
-                $state.go('root.dispatchcar.dispatchcarinfo.list[12]',{id:null,name:null});
-            }else{
-                toastr.error( response.data.msg, '温馨提示');
-            }
-        })
-    };*/
 });
 app.filter('staTus',function(){
     return function(val){

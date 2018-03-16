@@ -24,7 +24,7 @@ app.controller('reviewListCtrl',function($scope,reviewSer,toastr,$stateParams,$s
         if($scope.mailLists) return;
         var listData = {
             page:page || 1,
-            auditStatus:$scope.auditStatus || 'NONE'
+            /*auditStatus:$scope.auditStatus || 'NONE'*/
          /*   overWorker:$scope.overWorker || ''*/
         };
         reviewSer.reviewList(listData).then(function(response){

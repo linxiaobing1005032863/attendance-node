@@ -17,11 +17,11 @@
             <span></span>
             <span>地区</span>
             <span>驻点地点</span>
-            <span>经度</span>
-            <span>纬度</span>
             <span>考勤位置</span>
             <span>有效范围</span>
             <span>状态</span>
+            <span>打卡工作日</span>
+            <span>创建人</span>
             <span></span>
         </li>
         <li class="list-all" ng-repeat="lists in mailLists" style="display: {{lists._delete?'none':'block'}};">
@@ -30,11 +30,11 @@
                     <p mod>{{$index+1+num}}</p>
                     <p mod>{{::lists.area}}</p>
                     <p mod>{{::lists.pointArea}}</p>
-                    <p mod>{{::lists.longitude}}</p>
-                    <p mod>{{::lists.latitude}}</p>
                     <p mod>{{::lists.location}}</p>
-                    <p mod>{{::lists.range}}</p>
+                    <p mod>{{::lists.range}}米</p>
                     <p mod>{{lists.status|staTus}}</p>
+                    <p mod>{{::lists.workDay}}</p>
+                    <p mod>{{::lists.name}}</p>
                     <p>
                         <a href="javascript:void(0)" class="more" ng-click="moreList(lists)">更多详细</a>
                     </p>
@@ -43,15 +43,15 @@
                     <ul class="can-see" style="display: {{lists._moreList?'block':'none'}};">
                         <li>
                             <p class="see-parent">
-                                <span>打卡工作日</span>
-                                <span>创建人</span>
+                                <span>经度</span>
+                                <span>纬度</span>
                                 <span>创建时间</span>
 
                             </p>
                             <p class="see-children">
-                                <span mod>{{::lists.workDay}}</span>
-                                <span mod>{{::lists.name}}</span>
-                                <span mod>{{::lists.createTime}}</span>
+                            <span mod>{{::lists.longitude}}</span>
+                            <span mod>{{::lists.latitude}}</span>
+                            <span mod>{{::lists.createTime}}</span>
                             </p>
                         </li>
 

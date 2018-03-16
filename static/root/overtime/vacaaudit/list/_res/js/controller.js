@@ -23,7 +23,6 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,$stateParams,$sta
         if($scope.mailLists) return;
         var listData = {
             page:page || 1,
-            overWorker:$scope.overWorker || ''
         };
         auditSer.auditList(listData).then(function(response){
             if(response.data.code==0){
@@ -151,5 +150,51 @@ app.controller('auditListCtrl',function($scope,auditSer,toastr,$stateParams,$sta
             }
         })
     };*/
+});
+
+app.filter('type',function(){
+    return function(val){
+        var result;
+        switch(val){
+            case "ANNUAL":
+                result = "年假";
+                break;
+            case "MATTER":
+                result = "事假";
+                break;
+            case "SICK":
+                result = "病假 ";
+                break;
+            case "ADJUST":
+                result = "调休";
+                break;
+            case "MARRY":
+                result = "婚假";
+                break;
+            case "MATERNITY":
+                result = "产假 ";
+                break;
+            case "PATERNITY":
+                result = "陪产假";
+                break;
+            case "CHECK":
+                result = "产检假";
+                break;
+            case "FUNERAL":
+                result = "丧假 ";
+                break;
+            case "OTHER":
+                result = "其他 ";
+                break;
+            case true:
+                result = "是";
+                break;
+            case false:
+                result = "否";
+                break;
+        }
+        return result;
+    }
+
 });
 

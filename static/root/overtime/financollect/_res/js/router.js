@@ -19,5 +19,13 @@ app.config(function($provide, $stateProvider){
                 controller:'financollectCtrl'
             }
         }
+    }).state("root.overtime.financollect.export[12]",{
+        url:"/export[12]?id=&page=",
+        views:{
+            "content@root.overtime.financollect":{
+                templateUrl : "root/overtime/financollect/export/_res/html/index.html",
+                controller:'finanexportCtrl'
+            }
+        }
     })
 });

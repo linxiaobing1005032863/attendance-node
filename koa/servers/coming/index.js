@@ -5,42 +5,6 @@ var form = require(path.resolve('plugins/form.js'));
 var urlEncode = require(path.resolve('plugins/urlEncode.js'));
 var uploadFile = require(path.resolve('plugins/uploadFile.js'));
 module.exports = function(){
-/*//设置导航权限
-    this.devicerepairNav = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + '/devicerepair/v1/setButtonPermission',//2017-07-28
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
-    //导航权限
-    this.devicerepairper = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + '/devicerepair/v1/sonPermission',//2017-07-28
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };
-    //菜单功能权限
-    this.guidePermission = function(argvs){
-        var options = {
-            method : 'GET',
-            timeout : 3000,
-            uri : config()['rurl'] + `/devicerepair/v1/guidePermission?guideAddrStatus=`+argvs.name,//2017-07-28
-            headers:{
-                userToken:argvs.userToken
-            }
-        };
-        return request(options);
-    };*/
 //设置导航权限
     this.vacateSetButton = function(argvs){
         var options = {
@@ -942,16 +906,14 @@ module.exports = function(){
         var options = {
             method: 'PUT',
             timeout: 3000,
-            uri: config()['rurl'] + `/vacateset/v1/edit${urlEncode(argvs, true)}`,
+            uri: config()['rurl'] + `/vacateset/v1/edit`,
+            form: argvs,
             headers: {
                 userToken: argvs.userToken
             }
         };
         return request(options);
     };
-
- 
-
     ////根据id查询请假设置
     this.leaveInfoId = function (argvs) {
         var options = {
@@ -1191,7 +1153,7 @@ module.exports = function(){
     this.Alluser = function(argvs){
         var options = {
             method : 'GET',
-            timeout : 3000,
+            timeout : 15000,
             uri : config()['rurl'] + `/financeattendance/v1/user`,
             headers:{
                 userToken:argvs.userToken

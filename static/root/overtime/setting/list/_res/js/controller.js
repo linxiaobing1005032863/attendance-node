@@ -3,7 +3,7 @@ app.controller('settingListCtrl',function($scope,settingSer,toastr,$stateParams,
     $scope.$emit('changeId', null);
     //分页
     $scope.pagination = {
-        itemsCount: 11,//总条数
+        itemsCount: 5,//总条数
         take: 10,        //每页显示
         activatePage: activatePage
     };

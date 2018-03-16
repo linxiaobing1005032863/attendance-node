@@ -52,6 +52,10 @@ app.controller('financollectModuleCtrl',function ($scope,$state) {
         $scope.menuClass = 'collectMenu';
         $scope.idListd = ''
     };
+    $scope.export= function(){
+        $scope.menuClass = 'exportMenu';
+        $scope.idListd = ''
+    };
 
  
 

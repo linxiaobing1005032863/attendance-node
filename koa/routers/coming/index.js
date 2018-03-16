@@ -12,40 +12,7 @@ var fileType = require(path.resolve('plugins/fileType.js'));
 module.exports = function(){
     var router = new Router();
 
-    router/*.get('/devicerepair/setButtonPermission', function*(){ //设置导航权限
-        var $self = this;
-        var navToken = {userToken:$self.cookies.get('token')};
-        yield (server().devicerepairNav(navToken)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-            }));
-    }).get('/devicerepair/sonPermission', function*(){ //导航权限
-        var $self = this;
-        var navToken = {userToken:$self.cookies.get('token')};
-        yield (server().devicerepairper(navToken)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-            }));
-    }).get('/devicerepair/guidePermission/:guideAddrStatus', function*(){ //菜单权限
-        var $self = this;
-        var page = {name:$self.params.guideAddrStatus,userToken:$self.cookies.get('token')};
-        yield (server().guidePermission(page)
-            .then((parsedBody) =>{
-                var responseText = JSON.parse(parsedBody);
-                $self.body = responseText;
-            }).catch((error) =>{
-                $self.set('Content-Type','application/json;charset=utf-8');
-                $self.body=error.error;
-            }));
-    })*/.get('/vacate/setButtonPermission', function*(){ //设置导航权限
+    router.get('/vacate/setButtonPermission', function*(){ //设置导航权限
         var $self = this;
         var navToken = {userToken:$self.cookies.get('token')};
         yield (server().vacateSetButton(navToken)
@@ -492,7 +459,10 @@ module.exports = function(){
     }).post('/punch/pc', function*(){//pc端打卡
         var $self = this;
         var addData = $self.request.body;
+        // var header = $self.request.header;
         addData.userToken = $self.cookies.get('token');
+        // addData.X-Real-IP = header.X-Real-IP;
+        // addData.X-Forwarded-For = header.X-Forwarded-For;
         yield (server().punchPc(addData)
             .then((parsedBody) =>{
                 var responseText = JSON.parse(parsedBody);
@@ -1855,6 +1825,20 @@ module.exports = function(){
                 $self.body=error.error;
                 console.error(error.error);
             }));
+    }).get('/financeattendance/excel/export', function*(){//导出  财务出勤表  /*2018/1/24*/
+        var $self = this;
+        var count = $self.request.query;
+        var fileName = '财务出勤表.xlsx';
+        yield (fetch(config()['rurl']+`/financeattendance/v1/excel/export${urlEncode(count,true)}`, {
+            method : 'GET',
+            headers : {'userToken' : $self.cookies.get('token')}
+        }).then(function(res){
+            $self.set('content-type', 'application/vnd.ms-excel;charset=utf-8');
+            $self.set('Content-Disposition', 'attachment;  filename='+encodeURI(fileName));
+            return res.buffer();
+        }).then(function(data){
+            $self.body = data;
+        }));
     })
     return router;
 };

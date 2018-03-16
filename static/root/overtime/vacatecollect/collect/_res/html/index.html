@@ -5,12 +5,12 @@
                 <label><i><img src="/images/mandatory.png"></i><em>汇总类型: </em></label>
                 <select class="sele selwct3" ng-model="countType" ng-change="aaa()">
                     <option value="">请选择</option>
-                    <option value="WHOLE">整体汇总</option>
+                    <option value="PERSONAL">个人汇总</option>
                     <option value="DEPART">部门汇总</option>
                 </select>
             </li>
             <li class="required"  style="width:280px" ng-show="aa">
-                <label style="width:20%"><i><img src="/images/mandatory.png"></i><em>部门</em></label>
+                <label style="width:20%"><i><img src="/images/mandatory.png"></i><em>部门:</em></label>
                 <div class="select2" style="height:30px">
                     <p class="select-text">
                         <span ng-repeat="str in positions">{{str.department||str.operator}}, </span>
@@ -18,12 +18,21 @@
                     <div class="mymultiselect"  ng-dropdown-multiselect="" options="workOptions"  selected-model="positions" extra-settings="stringSettings"></div>
                 </div>
             </li>
-            <li class="required">
-                <label><i><img src="/images/mandatory.png"></i><em>开始时间 </em></label>
-                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter startTime" ng-model="startTime" >
+            <li class="required"  style="width:280px" ng-show="bb">
+                <label style="width:20%"><i><img src="/images/mandatory.png"></i><em>个人:</em></label>
+                <div class="select2" style="height:30px">
+                    <p class="select-text">
+                        <span ng-repeat="str in getallUsers">{{str.department||str.operator}}, </span>
+                    </p>
+                    <div class="mymultiselect"  ng-dropdown-multiselect="" options="getUsers"  selected-model="getallUsers"  extra-settings="stringSettings1"></div>
+                </div>
             </li>
             <li class="required">
-                <label><i><img src="/images/mandatory.png"></i><em>结束时间 </em></label>
+                <label><i><img src="/images/mandatory.png"></i><em>开始时间: </em></label>
+                <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter startTime"         ng-model="startTime" >
+            </li>
+            <li class="required">
+                <label><i><img src="/images/mandatory.png"></i><em>结束时间: </em></label>
                 <input type="text" onClick="laydate({istime: true, format: 'YYYY-MM-DD'})" class="inputter endTime" ng-model="endTime" >
             </li>
             <button  ng-click="collect()" class="col">汇总</button>
@@ -53,8 +62,8 @@
                                 <ul class="sum-tbody-li-ul1">
                                     <li style="width:100%"  ng-repeat="list3 in list2.sons">
                                         <span  class="tES" title="{{::list3.position}}">{{::list3.position}}</span>
-                                        <ul  class="sum-tbody-li-ul2" ng-repeat="list4 in list3.sons">
-                                            <li style="width:100%">
+                                        <ul  class="sum-tbody-li-ul2">
+                                            <li style="width:100%"  ng-repeat="list4 in list3.sons">
                                             <span  class="tES" style="height:46px" title="{{::list4.name}}">{{::list4.name}}</span>
                                             <span class="tES"  style="height:45px" title="{{::list4.fillTime}}">{{::list4.fillTime}}</span>
                                             <span class="tES"  style="height:45px" title="{{::list4.normalTime}}">{{::list4.normalTime}}</span>

@@ -26,8 +26,6 @@ app.controller('auditsetAddCtrl', function($scope, auditsetSer,$state,toastr,$st
             time:vm.time,
             remark:vm.remark,
         }
-
-
         auditsetSer.Addauditset(data).then(function(response){
             if(response.data.code == 0){
                 $state.go('root.overtime.audittimeset.list[12]');

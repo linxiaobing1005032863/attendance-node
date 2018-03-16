@@ -41,7 +41,6 @@ app.controller('pointListCtrl',function($scope,pointSer,toastr,$stateParams,$sta
         var listData = {
             page:page || 1,
             pointAreas:$scope.pointAreas || ''
-            /* overWorker:$scope.overWorker || ''*/
         };
         pointSer.pointList(listData).then(function(response){
             if(response.data.code==0){

@@ -1,91 +1,170 @@
 <div class="content-input add" verify-scope="tipStyle: 1">
-    <div class="input-list">
-        <section>
+    <div class="add-container">
+        <div class="content-box">
             <ul>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>地区</em></label>
-                    <div class="sele side">
-                        <select class="sele" ng-model="edit.area">
+                    <label style="margin-left: 30px"><em>地区</em></label>
+                    <div class=" sele side seel">
+                        <select class="sele" ng-model="edit.area" >
                             <option  ng-repeat="area in Areas">{{area.area}}</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="edit.area">
+                        <input type="text"  class="inputDom"  ng-model="edit.area" style="width:420px!important">
                     </div>
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>驻点地点</em></label>
-                    <div class="sele side">
-                        <select class="sele" ng-model="edit.pointArea">
+                    <label><em>驻点地区</em></label>
+                    <div class="seel sele side">
+                        <select class="sele" ng-model="edit.pointArea" >
                             <option  ng-repeat="point in points">{{point}}</option>
                         </select>
-                        <input type="text"  class="inputDom" ng-verify="{}" ng-model="edit.pointArea">
+                        <input type="text"  class="inputDom"  ng-model="edit.pointArea" style="width:420px!important">
                     </div>
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>大小周</em></label>
-                    <select class="sele" ng-model="edit.week" ng-verify="option:0">
-                        <option value="">请选择</option>
-                        <option ng-value=true>是</option>
-                        <option ng-value=false>否</option>
-                    </select>
+                    <label><em>打卡工作日</em></label>
+                    <div class="daybg">
+                        <div class="daybg-top">
+                            <p ng-model="workDays"><!--<i class="workDaysss">周一周二周三周四周五</i>-->
+                                <i class="workDayss" ng-repeat="list in workDays">{{list.value}}</i>
+                            </p>
+                            <span ng-click="show()">修改</span>
+                        </div>
+                        <div class="daybg-amend" ng-show="aa">
+                            <div class="amend-box">
+                                <ul>
+                                    <li>
+                                        <p>设置打卡工作日</p>
+                                        <!--   <botton class="cancelfirst">X</botton>-->
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="one" value="ONE" name="check-week">
+                                        <label for="one" class="box checkbox-one">
+                                            <span></span>
+                                        </label>
+                                        <span class="one">周一</span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="two" value="TWO" name="check-week">
+                                        <label for="two" class="box checkbox-one">
+                                            <span></span>
+                                        </label>
+                                        <span class="two">周二</span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="three" value="THREE" name="check-week">
+                                        <label for="three" class="box checkbox-one">
+                                            <span></span>
+                                        </label>
+                                        <span class="three">周三</span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="four" value="FOUR" name="check-week">
+                                        <label for="four" class="box checkbox-one">
+                                            <span></span>
+                                        </label>
+                                        <span class="four">周四</span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="five" value="FIVE"  name="check-week">
+                                        <label for="five" class="box checkbox-one">
+                                            <span></span>
+                                        </label>
+                                        <span class="five">周五</span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="six" value="SIX" name="check-week">
+                                        <label for="six" class="box checkbox-one">
+                                            <span></span>
+                                        </label>
+                                        <span class="six">周六</span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="serven" value="SEVEN" name="check-week">
+                                        <label for="serven" class="box checkbox-one">
+                                            <span></span>
+                                        </label>
+                                        <span class="serven">周日</span>
+                                    </li>
+                                    <li>
+                                        <button class="cancel" ng-click="cancel()">取消</button>
+                                        <button class="affirm" ng-click="affirm()">确认</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="daybg-bottom">
+                            <p><span>大小周:</span>启用大小周后，本周默认双休</p>
+                            <div class="checkbox-all">
+                                <input type="checkbox" id="checkbox-one"  name="test" ng-model="edit.week">
+                                <label for="checkbox-one" class="box checkbox-one">
+                                    <span></span>
+                                </label>
+                                <span>启用</span>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>有效范围（米）</em></label>
-                    <input type="number" ng-verify="{}" ng-model="edit.range">
-                </li>
+                    <label><em>考勤位置</em></label>
+                    <div class="daybg" style="margin-left: 22px">
+                        <div class="map-hide" ng-click="bbb()">
+                            <p>+添加考勤位置</p>
+                        </div>
+                        <div class="daybg-amend" ng-show="bb">
+                            <div class="amend-box">
+                                <ul>
+                                    <li>
+                                        <p>添加考勤位置</p>
+                                        <!--   <botton class="cancelfirst">X</botton>-->
+                                    </li>
+                                    <li>
+                                        <span>考勤位置</span>
+                                        <input type="text" placeholder="请输入位置" id="keyword" name="keyword" ng-model="location">
+                                        <td class="column2" >
+                                            <input type="text" readonly="true" id="lnglat" style="display: none">
+                                        </td>
+                                    </li>
+                                    <li style="width:100%;height:250px;">
+                                        <div class="container1" id="container1">
 
-                <div class="map-div">
-                    <div id="container1"></div>
-                    <div id="myPageTop1">
-                        <table class="tbody">
-                            <tr>
-                                <td>
-                                    <label>按关键字搜索：</label>
-                                </td>
-                                <td class="column2">
-                                    <label>经纬度：</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!--  <input type="text" placeholder="请输入关键字进行搜索" id="tipinput">-->
-                                    <input type="text" id="keyword" name="keyword" value="请输入关键字：(选定后搜索)" onfocus='this.value=""'/>
-                                </td>
-                                <td class="column2">
-                                    <input type="text" readonly="true" id="lnglat">
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>考勤位置 </em></label>
-                    <input type="text" ng-verify="{}" ng-model="edit.location">
-                </li>
-                <li class="required">
-                    <label><i><img src="/images/mandatory.png"></i><em>状态</em></label>
-                    <select class="sele" ng-model="edit.status" ng-verify="option:0">
-                        <option value="">请选择</option>
-                        <option value="START">启用</option>
-                        <option value="STOP">禁用</option>
-                    </select>
-                </li>
-                <li class="required" ng-hide="edit.week">
-                    <label><i><img src="/images/mandatory.png"></i><em>打卡工作日</em></label>
-                    <div class="select">
-                        <p class="select-text">
-                            <span ng-repeat="str in workDays">{{str.value||str.operator}}, </span>
-                        </p>
-                        <div class="mymultiselect"  ng-dropdown-multiselect="" options="workOptions" selected-model="workDays" extra-settings="stringSettings"></div>
-                    </div>
-                </li>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <button class="cancel" ng-click="cancel1()">取消</button>
+                                        <button class="affirm" ng-click="affirm1()">确认</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="postion">
+                            <span>有效范围:</span>
+                            <select class="sele" ng-model="edit.range" >
+                                <option ng-value="200">200米内</option>
+                                <option ng-value="300">300米内</option>
+                                <option ng-value="500">500米内</option>
+                                <option ng-value="800">800米内</option>
+                                <option ng-value="1000">1000米内</option>
+                            </select>
+                        </div>
 
+
+                    </div>
+                </li>
+                <li>
+                    <input type="text" placeholder="经度" ng-model="longitude" id="text1">
+                    <input type="text" placeholder="纬度" ng-model="latitude">
+                </li>
+                <li class="required">
+                    <div class="state">
+                        <span>状态</span>
+                        <input type="radio"  ng-checked="true"  ng-model="edit.status" name="payMethod" value="START"/>启用
+                        <input type="radio" name="payMethod" value="STOP" ng-model="edit.status" />禁用
+                    </div>
+                </li>
+                <li><button class="arrestpointFun" ng-click="arrestpointFun()">提交</button></li>
             </ul>
-        </section>
+        </div>
     </div>
-    <p class="dataBottom">
-        <span class="imPrompt"><i><img src="/images/prompt.png"></i>带有<i><img src="/images/mandatory.png"></i>的为必填项</span>
-        <button ng-verify="{control:'myform'}" ng-click="extraAddFun()">提交</button>
-    </p>
 </div>
 
 <!--
